@@ -1,0 +1,48 @@
+{
+  "dxt_version": "0.1",
+  "name": "chip_atlasmcp",
+  "version": "1.0.0",
+  "description": "Fetch and analyze ChIP-Atlas metadata (experiment, file, analysis, antigen, and cell type). Supports filtering, previewing, and saving full datasets for transcription factors and histone modifications.",
+  "author": {
+    "name": "Shrihari Kamalan Kumaraguruparan",
+    "email": "kkshrihari@gmail.com"
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "Chip_Atlasmcp/mcp_server.py",
+    "mcp_config": {
+      "command": "py",
+      "args": [
+        "-3.11",
+        "${__dirname}/Chip_Atlasmcp/mcp_server.py",
+        "--serve"
+      ]
+    }
+  },
+  "tools": [
+    {
+      "name": "fetch_chip_atlas",
+      "description": "Fetch and summarize ChIP-Atlas metadata for a specific gene or antigen. Returns preview and saves full dataset."
+    },
+    {
+      "name": "version_info",
+      "description": "Display version and author information for the Chip_Atlasmcp package."
+    },
+    {
+      "name": "ping",
+      "description": "Simple connectivity test for MCP setup."
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ChIP-Atlas",
+    "epigenomics",
+    "chip-seq",
+    "bioinformatics",
+    "gene regulation",
+    "metadata",
+    "transcription factors",
+    "chromatin",
+    "MCP"
+  ]
+}

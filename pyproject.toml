@@ -1,0 +1,96 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chip_atlasmcp"
+version = "1.0.0"
+description = "Chip_AtlasMCP is an MCP-compatible extension providing programmatic access to ChIP-Atlas metadata (experiment, file, analysis, antigen, and cell type). It enables filtering, previewing, and saving ChIP-Seq datasets in structured formats for bioinformatics workflows."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Shrihari Kamalan Kumaraguruparan", email = "kkshrihari@gmail.com" }
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+requires-python = ">=3.9"
+
+dependencies = [
+    # Core utilities
+    "requests>=2.25.0",
+    "anyio",
+    "python-dotenv",
+    "pydantic",
+    "pydantic-settings",
+    "jsonschema",
+
+    # Web server / async I/O
+    "httpx",
+    "httpx-sse",
+    "sse-starlette",
+    "starlette",
+    "uvicorn",
+    "websockets",
+
+    # CLI and output
+    "typer>=0.9,<0.16",
+    "rich",
+
+    # MCP SDK
+    "mcp",
+
+    # Data stack
+    "pandas",
+    "numpy",
+
+    # Optional Windows support
+    "pywin32; sys_platform == 'win32'"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "black>=21.0",
+    "flake8>=3.8",
+    "mypy>=0.800"
+]
+
+[project.scripts]
+chip_atlasmcp = "Chip_Atlasmcp.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/kkShrihari/Chip-AtlasMCP"
+Repository = "https://github.com/kkShrihari/Chip-AtlasMCP"
+Documentation = "https://github.com/kkShrihari/Chip-AtlasMCP#readme"
+Issues = "https://github.com/kkShrihari/Chip-AtlasMCP/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["Chip_Atlasmcp*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=Chip_Atlasmcp --cov-report=term-missing"
