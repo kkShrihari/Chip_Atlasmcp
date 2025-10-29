@@ -81,9 +81,8 @@ async def fetch_chip_atlas(
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
-# -----------------------------
-# 🔢 Version Info
-# -----------------------------
+#  Version Info
+
 @mcp.tool()
 async def version_info():
     """Return version and author of Chip_Atlasmcp."""
@@ -93,17 +92,18 @@ async def version_info():
     except Exception:
         return {"version": "0.1.0", "author": "Shrihari"}
 
-# -----------------------------
-# 🩺 Connectivity Test
-# -----------------------------
+
+#  Connectivity Test
+
 @mcp.tool()
 async def ping(msg: str = "hello"):
     """Ping test to confirm MCP connection."""
     return {"reply": f"pong: {msg}"}
 
-# -----------------------------
-# 🚀 Entry Point
-# -----------------------------
+
+#  Entry Point
+
 if __name__ == "__main__":
     if "--serve" in sys.argv:
         asyncio.run(mcp.run())
+
