@@ -89,6 +89,3 @@ def display_response_table(data, max_rows: int = 10):
         return
 
     console.print("[red]Cannot display data: expected a dictionary or list of dictionaries.[/red]")
-
-
-#https://ccb-compute.cs.uni-saarland.de/mirtargetlink2
